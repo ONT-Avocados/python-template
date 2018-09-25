@@ -74,3 +74,5 @@ Deploy smart contract in testmode. Here --code="your avm file"
 ```
 
 Invoke methods within your contract, please refer to the usage of ontology cli ([EN](https://github.com/ontio/ontology/blob/master/docs/specifications/cli_user_guide.md), [CN](https://github.com/ontio/ontology/blob/master/docs/specifications/cli_user_guide_CN.md)).
+
+123dfdfd45679009999dfdfd454545herhughweirhdfdsfasd

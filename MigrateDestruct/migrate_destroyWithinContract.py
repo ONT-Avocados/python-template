@@ -7,8 +7,10 @@ def Main(operation, args):
     if operation == "DestroyContract":
         return DestroyContract()
     if operation == "MigrateContract":
-        code = args[0]
-        return MigrateContract(code)
+        if args[0] != 0:
+            Notify("param error")
+            return False
+        return MigrateContract(args[0])
 
 
 def DestroyContract():
@@ -18,11 +20,10 @@ def DestroyContract():
 
 def MigrateContract(code):
     """
-    Note that the existing contract will not replaced by the newly migrated contract
-    :param code:
+    Note that the existing contract will be replaced by the newly migrated contract
+    :param code: your avm code
     :return:
     """
     Migrate(code, "", "", "", "", "", "", "", "")
-
-    Notify(["Migrate"])
+    Notify(["Migrate successfully"])
     return True

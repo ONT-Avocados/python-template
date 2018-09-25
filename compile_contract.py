@@ -27,19 +27,19 @@ if __name__ == '__main__':
 
     # template_file_path = "./OEP4Sample_raise_Exception/"
     # template_file_name = "OEP4Sample_raiseException"
-
+    #
     # template_file_path = "./MigrateDestruct/"
     # template_file_name = "migrate_destroyWithinContract"
-
+    #
     # template_file_path = "./MySimpleToken/"
     # template_file_name = "MySimpleToken"
-
-    # template_file_path = "./Static_Call_Nep4/"
-    # template_file_name = "static_call_nep5"
-
+    #
+    # template_file_path = "./Static_Call_Oep4/"
+    # template_file_name = "static_call_Oep5"
+    #
     # template_file_path = "./Storage_Example/"
     # template_file_name = "storage_example"
-
+    #
     # template_file_path = "./Struct_Example/"
     # template_file_name = "struct_example"
 
