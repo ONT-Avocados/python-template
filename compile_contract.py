@@ -31,8 +31,8 @@ def run(file_path, file_name):
 if __name__ == '__main__':
     """ set up the compiled file path and file name"""
 
-    template_file_path = "./OEP4Sample_raise_Exception/"
-    template_file_name = "OEP4Sample_raiseException"
+    # template_file_path = "./OEP4Sample_raise_Exception/"
+    # template_file_name = "OEP4Sample_raiseException"
 
     # template_file_path = "./MigrateDestruct/"
     # template_file_name = "migrate_destroyWithinContract"
@@ -43,8 +43,8 @@ if __name__ == '__main__':
     # template_file_path = "./Static_Call_Oep4/"
     # template_file_name = "static_call_Oep4"
 
-    # template_file_path = "./Storage_Example/"
-    # template_file_name = "storage_example"
+    template_file_path = "./Storage_Example/"
+    template_file_name = "storage_example"
 
     # template_file_path = "./Struct_Example/"
     # template_file_name = "struct_example"

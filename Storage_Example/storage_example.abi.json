@@ -1,0 +1,10 @@
+{
+    "hash": "d8a438b750a3317b8aaacf1bb4d715156802413b",
+    "entrypoint": "Main",
+    "functions": [
+        {
+            "name": "TestStorage",
+            "parameters": []
+        }
+    ]
+}

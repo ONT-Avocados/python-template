@@ -4,6 +4,7 @@ You can import this file and methods in your smart contract,
 you can also add safe math methods within this function based on your needs.
 """
 from template_contract_test.libs.SafeCheck import Require
+from boa.interop.System.Runtime import Notify
 
 def Add(a, b):
 	"""
@@ -51,7 +52,6 @@ def Pwr(a, b):
     :param b the power value
     :return a^b
     """
-    # return a+b
     c = 0
     if a == 0:
         c = 0
@@ -66,8 +66,14 @@ def Pwr(a, b):
     return c
 
 def Sqrt(a):
-	b = Div(Add(a + 1), 2)
-	c = a
-	while(a < b):
-		c = b
-		b = Div(Add(Div(a, b), b), 2)
+    """
+    Return sqrt of a
+    :param a:
+    :return: sqrt(a)
+    """
+    c = Div(Add(a, 1), 2)
+    b = a
+    while(c < b):
+        b = c
+        c = Div(Add(Div(a, c), c), 2)
+    return c
