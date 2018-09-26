@@ -4,17 +4,22 @@ from boa.compiler import Compiler
 def hexlify_avm(blob):
     return binascii.hexlify(blob).decode('ascii')
 
-
 def read_avm(filename):
     with open(filename, 'rb') as f:
         return hexlify_avm(f.read())
+
 def save_avm(filename, a):
     with open(filename,'w') as f:
         f.write(a)
 
 
 def run(file_path, file_name):
-
+    """
+    Read the source py file and compile it, save it into readable avm file
+    :param file_path: the folder of file
+    :param file_name: the source file name without ".py"-suffix
+    :return:
+    """
     template_file = template_file_path + template_file_name
     template_file_name_py = template_file + ".py"
     Compiler.load_and_save(template_file_name_py)
