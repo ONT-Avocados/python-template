@@ -1,7 +1,8 @@
 This project aims for providing demos in python version for developing smart contract based on ontology.
 The following templates have been tested smoothly. The template contracts all work well 
-and they can be used as reference when you write ONT smart contract.
+and they can be used as reference when you write ONT smart contract. 
 
+* libs contain safe SafeMath, SafeCheck and Utils files
 * migrate_destroyWithinContract.py
 * MySimpleToken.py
 * static_call_Oep4.py
