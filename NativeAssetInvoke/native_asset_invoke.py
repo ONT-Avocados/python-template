@@ -17,12 +17,12 @@ def Main(operation, args):
         return TransferOntOng(args[0], args[1], args[2], args[3])
 
 
-def TransferOntOng(from_acct, to_acct, ont, ong):
-    param = state(from_acct, to_acct, ont)
-    res = Invoke(1, OntContract, "transfer", [param])
+def TransferOntOng(from_acct, to_acct, ontAmount, ongAmount):
+    param = state(from_acct, to_acct, ontAmount)
+    res = Invoke(0, OntContract, "transfer", [param])
     if res != b'\x01':
         raise Exception("transfer ont error.")
-    param = state(from_acct, to_acct, ong)
+    param = state(from_acct, to_acct, ongAmount)
     Notify("transferONT succeed")
     res = Invoke(0, OngContract, "transfer", [param])
     if res != b'\x01':

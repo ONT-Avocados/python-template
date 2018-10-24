@@ -6,19 +6,21 @@ and they can be used as reference when you write ONT smart contract.
 * migrate_destroyWithinContract.py
 * MySimpleToken.py
 * static_call_Oep4.py
-* OEP4Sample_raiseException.py
 * struct_example.py
 * storage_example.py
 * native_asset_invoke.py
+* OEP4Sample.py
+* OEP5Sample.py
+* event_test.py
 
 ## Instruction
 
-### Preparation
+###  Preparation
 
 ##### 1. configure ontology cli
 For test usage, you can start ontology node and test your contract under ontology cli. 
 ###### 1.1 Install ontology cli
- The instructions for installation of cli is given [here](https://github.com/ontio/ontology)  
+ The instructions for installation of cli is given [here](https://github.com/ontio/ontology).
 
 ###### 1.2 Usage of ontology cli
 The instructions for usage of cli is given here ([EN](https://github.com/ontio/ontology/blob/master/docs/specifications/cli_user_guide.md), [CN](https://github.com/ontio/ontology/blob/master/docs/specifications/cli_user_guide_CN.md)).
@@ -55,20 +57,19 @@ pip install neo-boa
 Suggest you can ignore boa-test since some of the paths are configured wrongly.
  
 
-### Usage
+###  Usage
 
 Download the "python-template" zip folder and unzip it to any folder you create parallel with "boa" folder.
-
+##### 3.1 Compile contract
 Open "compile_contract.py", make sure there is nothing wrong with compiling it. Then you can run this py file. 
 Accordingly, the corresponding readable avm file will be in the corresponded folder.
 
 Copy your avm file into your "$GOPATH/src/github.com/ontio/ontology/*" (the folder containing your ontology and wallet).
-
-Start ontology node
+##### 3.2 Start ontology node
 ```
 ontology --testmode --gasprice=0
 ```
-
+##### 3.3 Deploy contract
 Deploy smart contract in testmode. Here --code="your avm file"
 ```
 ./ontology contract deploy --name=xxx 
@@ -76,5 +77,7 @@ Deploy smart contract in testmode. Here --code="your avm file"
 --author=xxx --desc=xxx --email=xxx --needstore --gaslimit=100000000
 
 ```
-
+##### 3.4 Invoke contract
 Invoke methods within your contract, please refer to the usage of ontology cli ([EN](https://github.com/ontio/ontology/blob/master/docs/specifications/cli_user_guide.md), [CN](https://github.com/ontio/ontology/blob/master/docs/specifications/cli_user_guide_CN.md)).
+
+ 
