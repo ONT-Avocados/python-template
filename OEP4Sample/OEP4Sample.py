@@ -5,7 +5,7 @@ from boa.interop.System.Storage import GetContext, Get, Put, Delete
 from boa.interop.System.Runtime import Notify, CheckWitness
 from boa.interop.System.Action import RegisterAction
 from boa.builtins import concat, ToScriptHash
-from boa.interop.Ontology.Runtime import AddressToBase58, Base58ToAddress
+# from boa.interop.Ontology.Runtime import AddressToBase58, Base58ToAddress
 
 TransferEvent = RegisterAction("transfer", "from", "to", "amount")
 ApprovalEvent = RegisterAction("approval", "owner", "spender", "amount")
@@ -93,8 +93,8 @@ def init():
         Put(ctx,concat(BALANCE_PREFIX,OWNER),total)
 
         # Notify(["transfer", "", Base58ToAddress(OWNER), total])
-        ownerBase58 = AddressToBase58(OWNER)
-        TransferEvent("", ownerBase58, total)
+        # ownerBase58 = AddressToBase58(OWNER)
+        TransferEvent("", OWNER, total)
 
         return True
 
@@ -164,7 +164,8 @@ def transfer(from_acct,to_acct,amount):
     Put(ctx,toKey,toBalance + amount)
 
     # Notify(["transfer", AddressToBase58(from_acct), AddressToBase58(to_acct), amount])
-    TransferEvent(AddressToBase58(from_acct), AddressToBase58(to_acct), amount)
+    # TransferEvent(AddressToBase58(from_acct), AddressToBase58(to_acct), amount)
+    TransferEvent(from_acct, to_acct, amount)
 
     return True
 
@@ -204,7 +205,8 @@ def approve(owner,spender,amount):
     Put(ctx, key, amount)
 
     # Notify(["approval", AddressToBase58(owner), AddressToBase58(spender), amount])
-    ApprovalEvent(AddressToBase58(owner), AddressToBase58(spender), amount)
+    # ApprovalEvent(AddressToBase58(owner), AddressToBase58(spender), amount)
+    ApprovalEvent(owner, spender, amount)
 
     return True
 
@@ -245,7 +247,8 @@ def transferFrom(spender,from_acct,to_acct,amount):
     Put(ctx, toKey, toBalance + amount)
 
     # Notify(["transfer", AddressToBase58(from_acct), AddressToBase58(to_acct), amount])
-    TransferEvent(AddressToBase58(from_acct), AddressToBase58(to_acct), amount)
+    # TransferEvent(AddressToBase58(from_acct), AddressToBase58(to_acct), amount)
+    TransferEvent(from_acct, to_acct, amount)
 
     return True
 
