@@ -84,6 +84,9 @@ def init():
     initialize the contract, put some important info into the storage in the blockchain
     :return:
     """
+    if len(OWNER) != 20:
+        Notify(["Owner illegal!"])
+        return False
     if Get(ctx,SUPPLY_KEY):
         Notify("Already initialized!")
         return False
@@ -239,7 +242,7 @@ def transferFrom(spender,from_acct,to_acct,amount):
         return False
     elif amount == approvedAmount:
         Delete(ctx,approveKey)
-        Delete(ctx, fromBalance - amount)
+        Put(ctx, fromKey, fromBalance - amount)
     else:
         Put(ctx,approveKey,approvedAmount - amount)
         Put(ctx, fromKey, fromBalance - amount)
