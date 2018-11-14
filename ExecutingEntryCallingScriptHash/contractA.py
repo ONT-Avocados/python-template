@@ -3,8 +3,8 @@ from boa.interop.System.ExecutionEngine import GetExecutingScriptHash, GetCallin
 from boa.interop.System.Runtime import CheckWitness, GetTime, Notify, Serialize, Deserialize
 
 
-# Here "749a701ae89c0dbdab9b4b660ba84ee478004219" should your OPE4 contract hash, pls note it's not reversed hash
-ContractB = RegisterAppCall('91396642e3ec943bf749eb858ec7edd118ee54be', 'operation', 'args')
+# Here "4d99d1dad2caf811c3452fc1ef9cc1a3a8b59b9a" should your contract hash, pls note it's not reversed hash
+ContractB = RegisterAppCall('4d99d1dad2caf811c3452fc1ef9cc1a3a8b59b9a', 'operation', 'args')
 
 ContractAddress = GetExecutingScriptHash()
 
