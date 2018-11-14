@@ -12,6 +12,7 @@ and they can be used as reference when you write ONT smart contract.
 * OEP4Sample.py
 * OEP5Sample.py
 * event_test.py
+* Compare Executing Entry and Calling ScriptHash
 
 ## Instruction
 

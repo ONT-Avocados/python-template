@@ -6,6 +6,12 @@ from boa.interop.System.Runtime import CheckWitness, GetTime, Notify, Serialize,
 from boa.interop.System.ExecutionEngine import GetExecutingScriptHash
 from boa.builtins import ToScriptHash, sha256, concat
 
+
+from boa.interop.System.Runtime import Serialize, Deserialize
+
+
+
+
 # modify to the admin address
 admin = ToScriptHash('AQf4Mzu1YJrhz9f3aRkkwSm9n3qhXGSh4p')
 
@@ -138,20 +144,21 @@ def transfer(toAcct, tokenID):
         raise Exception('address length error!')
 
     ownerKey = concatkey(OWNER_OF_TOKEN_PREFIX, tokenID)
-    balanceKey = concatkey(OWNER_BALANCE_PREFIX, tokenOwner)
+    fromAcct = Get(ctx, ownerKey)
+    balanceKey = concatkey(OWNER_BALANCE_PREFIX, fromAcct)
     fromBalance = Get(ctx, balanceKey)
-    # to avoid underflow
-    if fromBalance > 1:
+    if fromBalance >= 1:
         # decrease fromAccount token balance
         Put(ctx, balanceKey, fromBalance - 1)
-
+    else:
+        raise Exception('fromBalance error')
     # set the owner of tokenID to toAcct
     Put(ctx, ownerKey, toAcct)
     # increase toAccount token balance
     balanceKey = concatkey(OWNER_BALANCE_PREFIX, toAcct)
     Put(ctx, balanceKey, balanceOf(toAcct) + 1)
 
-    Notify(['transfer', tokenOwner, toAcct, tokenID])
+    Notify(['transfer', fromAcct, toAcct, tokenID])
 
     return True
 
@@ -185,7 +192,7 @@ def approve(toAcct, tokenID):
 
     Put(GetContext(), concatkey(APPROVE_PREFIX, tokenID), toAcct)
     Notify(['approve', tokenOwner, toAcct, tokenID])
-    return False
+    return True
 
 
 def takeOwnership(toAcct, tokenID):
@@ -212,7 +219,7 @@ def takeOwnership(toAcct, tokenID):
     fromBalance = balanceOf(tokenOwner)
     toBalance = balanceOf(toAcct)
     # to avoid overflow
-    if fromBalance > 1 and toBalance < toBalance + 1:
+    if fromBalance >= 1 and toBalance < toBalance + 1:
         Put(ctx, concatkey(OWNER_BALANCE_PREFIX, tokenOwner), fromBalance - 1)
         Put(ctx, concatkey(OWNER_BALANCE_PREFIX, toAcct), toBalance + 1)
 
@@ -231,7 +238,7 @@ def init():
     based on your requirements, initialize the tokens
     :return:
     '''
-    Notify(["111_init"])
+    # Notify(["111_init"])
     if not Get(ctx, INITED) and CheckWitness(admin) == True:
         Put(ctx, INITED, 'TRUE')
         Put(ctx, TOTAL_SUPPLY, 0)
@@ -259,8 +266,8 @@ def queryTokenIDByIndex(idx):
     :return:
     '''
     tokenID = Get(ctx, concatkey(TOKEN_INDEX_PREFIX, idx))
-    Notify(["111_queryTokenIDByIndex", tokenID])
-    return
+    # Notify(["111_queryTokenIDByIndex", tokenID])
+    return tokenID
 
 
 def queryTokenByID(tokenID):
@@ -276,8 +283,8 @@ def queryTokenByID(tokenID):
     name = token_info['Name']
     image = token_info['Image']
     type = token_info['Type']
-    Notify(["111_token info: ", id, name, image, type])
-    return True
+    # Notify(["111_token info: ", id, name, image, type])
+    return [id, name, image, type]
 
 
 def getApproved(tokenID):
@@ -291,7 +298,7 @@ def getApproved(tokenID):
 
 
 def createMultiTokens():
-    Notify(["111_createMultiTokens begins"])
+    # Notify(["111_createMultiTokens begins"])
 
     a1 = {'Name': 'HEART A', 'Image': 'http://images.com/hearta.jpg'}
     a2 = {'Name': 'HEART 2', 'Image': 'http://images.com/heart2.jpg'}
@@ -311,7 +318,7 @@ def createMultiTokens():
     for card in cards:
         if createOneToken(card['Name'], card['Image'], 'CARD') != True:
             raise Exception('_createMultiToken failed')
-    Notify(["222_createMultiTokens ends"])
+    # Notify(["222_createMultiTokens ends"])
     return True
 
 
@@ -323,7 +330,7 @@ def createOneToken(name, url, type):
     :param type:
     :return:
     '''
-    Notify(["111_createOneToken begins"])
+    # Notify(["111_createOneToken begins"])
     # generate tokenID
     timestamp = GetTime()
     totalSupply = Get(ctx, TOTAL_SUPPLY)
@@ -333,7 +340,7 @@ def createOneToken(name, url, type):
     tokenID = sha256(tmp)
     # construct token map
     token = {'ID': tokenID, 'Name': name, 'Image': url, 'Type': type}
-    Notify(["222_createOneToken", newTotalSupply, tokenID, concatkey(TOKEN_ID_PREFIX, tokenID)])
+    Notify(["111_createOneToken", newTotalSupply, tokenID, concatkey(TOKEN_ID_PREFIX, tokenID)])
     Put(ctx, concatkey(TOKEN_INDEX_PREFIX, newTotalSupply), tokenID)
     ownerKey = concatkey(OWNER_OF_TOKEN_PREFIX, tokenID)
     Put(ctx, ownerKey, admin)
@@ -341,6 +348,6 @@ def createOneToken(name, url, type):
     # add to adminBalance
     adminBalance = Get(ctx, concatkey(OWNER_BALANCE_PREFIX, admin))
     Put(ctx, concatkey(OWNER_BALANCE_PREFIX, admin), adminBalance + 1)
-    Notify(["333_createOneToken ends"])
+    # Notify(["333_createOneToken ends"])
     return True
 #################### For testing usage only ends ######################
