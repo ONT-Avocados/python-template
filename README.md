@@ -4,7 +4,6 @@ and they can be used as reference when you write ONT smart contract.
 
 * libs contain safe SafeMath, SafeCheck and Utils files
 * migrate_destroyWithinContract.py
-* MySimpleToken.py
 * static_call_Oep4.py
 * struct_example.py
 * storage_example.py
