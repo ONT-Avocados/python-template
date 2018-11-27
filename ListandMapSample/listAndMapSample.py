@@ -62,4 +62,4 @@ def addMap(key, value):
     Put(GetContext(), MAPKEY, map1Info)
     Notify(["after add, map is ", map1["key2"], map1[key]])
 
-    return map
+    return True

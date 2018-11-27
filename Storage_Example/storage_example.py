@@ -6,14 +6,15 @@ ctx = GetContext()
 
 
 def Main(operation, args):
-    if operation == "TestStorage":
-        return TestStorage()
+    if operation == "testStorage":
+        return testStorage()
+    return False
 
-
-def TestStorage():
+def testStorage():
     Put(ctx, "key", 100)
     v = Get(ctx, "key")
     Notify(v)
 
     Delete(ctx, "key")
     Notify(Get(ctx, "key"))
+    return True

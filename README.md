@@ -1,3 +1,15 @@
+## Disclaimer
+All downloads and use of this repository (python-template) are deemed to have been read carefully and fully agree to the following terms.
+
+* This repository is only for personal learning and communication purposes and is strictly prohibited for commercial and non-use purposes.
+* The authors have the right to revoke the right to use any commercial activity or bad use.
+* The risks of using the contents within this repository (python-template) will be entirely token by the users, and the repository authors will not hold any responsibility.
+* The repository authors are not responsible for any accidents, negligence, contract damage, defects, copyright or other intellectual property rights infringement and any damage caused by improper use of any contents within this repository (python-template). And the repository authors will not take any legal responsibility.
+* The repository (python-template) authors do not assume any responsibility for service interruption or other defects caused by force majeure or hacking attacks, communication line interruptions, etc. In addition, under the circumstances that the authors do not take any responsibility, the authors will try to reduce the loss or bad effects caused to the users.
+* For issues not covered by this statement, please refer to relevant national laws and regulations. When this statement conflicts with relevant national laws and regulations, the national laws and regulations shall prevail.
+* The copyright of this repository and its right of modification, renewal and final interpretation are owned by the authors of the repository (python-template).
+
+## Introduction
 This project aims for providing demos in python version for developing smart contract based on ontology.
 The following templates have been tested smoothly. The template contracts all work well 
 and they can be used as reference when you write ONT smart contract. 
@@ -12,7 +24,8 @@ and they can be used as reference when you write ONT smart contract.
 * OEP5Sample.py
 * event_test.py
 * Compare Executing Entry and Calling ScriptHash
-* Avoid Contract Call Attack
+* Dynamic Call Contract
+* List and Map Sample
 
 
 ## Instruction

@@ -208,7 +208,7 @@ def takeOwnership(toAcct, tokenID):
     if not tokenOwner:
         return False
     approveKey = concatkey(APPROVE_PREFIX, tokenID)
-    approvedAcct = Get(ctx, concatkey(APPROVE_PREFIX, tokenID))
+    approvedAcct = Get(ctx, approveKey)
     if approvedAcct != toAcct:
         return False
 

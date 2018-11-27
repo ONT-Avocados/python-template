@@ -41,9 +41,6 @@ if __name__ == '__main__':
     # template_file_path = "./MigrateDestruct/"
     # template_file_name = "migrate_destroyWithinContract"
 
-    # template_file_path = "./MySimpleToken/"
-    # template_file_name = "MySimpleToken"
-
     # template_file_path = "./Static_Call_Oep4/"
     # template_file_name = "static_call_Oep4"
 
