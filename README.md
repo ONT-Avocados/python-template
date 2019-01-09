@@ -22,6 +22,7 @@ and they can be used as reference when you write ONT smart contract.
 * native_asset_invoke.py
 * OEP4Sample.py
 * OEP5Sample.py
+* OEP8Sample.py
 * event_test.py
 * Compare Executing Entry and Calling ScriptHash
 * Dynamic Call Contract
