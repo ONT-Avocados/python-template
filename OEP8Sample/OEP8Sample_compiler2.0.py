@@ -1,10 +1,12 @@
+OntCversion = '2.0.0'
 """
 This is a sample of OEP-8 smart contract
 """
-from boa.interop.System.Storage import GetContext, Get, Put, Delete
-from boa.interop.System.Runtime import CheckWitness, Notify
-from boa.interop.System.Action import RegisterAction
-from boa.builtins import ToScriptHash, concat
+from ontology.interop.System.Storage import GetContext, Get, Put, Delete
+from ontology.interop.System.Runtime import CheckWitness, Notify
+from ontology.interop.System.Action import RegisterAction
+from ontology.builtins import concat
+from ontology.interop.Ontology.Runtime import Base58ToAddress
 
 """
 https://github.com/ONT-Avocados/python-template/blob/master/libs/Utils.py
@@ -99,7 +101,7 @@ TransferEvent = RegisterAction("transfer", "fromAcct", "toAcct", "tokenId", "amo
 ApprovalEvent = RegisterAction("approval", "owner", "spender", "tokenId", "amount")
 
 # modify to the admin address
-admin = ToScriptHash('XXXX')
+admin = Base58ToAddress('XXXX')
 
 # TOKEN_ID1 is used to identify different tokens, to help store the token name, token symbol and balance
 TOKEN_ID_LIST = [b'\x01', b'\x02', b'\x03', b'\x04', b'\x05']
