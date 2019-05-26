@@ -158,7 +158,7 @@ def transfer(toAcct, tokenID):
     # increase toAccount token balance
     balanceKey = concatkey(OWNER_BALANCE_PREFIX, toAcct)
     Put(ctx, balanceKey, balanceOf(toAcct) + 1)
-
+    Delete(ctx, approveKey)
     Notify(['transfer', fromAcct, toAcct, tokenID])
 
     return True
